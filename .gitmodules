@@ -25,3 +25,6 @@
 [submodule "configs/trackers"]
 	path = configs/trackers
 	url = git@github.com:constructorfleet/HomeAssistant-Config-Tracker.git
+[submodule "configs/hubs"]
+	path = configs/hubs
+	url = https://github.com/constructorfleet/HomeAssistant-Config-Hub.git
