@@ -1,0 +1,182 @@
+version: "3.4"
+
+networks:
+  cluster-internal:
+    internal: true
+  cluster-ingress:
+    internal: false
+
+
+services:
+  mqtt:
+    container_name: automation_mqtt
+    image: eclipse-mosquitto:latest
+    networks:
+      - cluster
+    volumes:
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - /etc/localtime:/etc/localtime:ro
+
+  master:
+    container_name: automation_master
+    image: homeassistant/home-assistant:0.95.4
+    networks:
+      - cluster
+    ports:
+      - 8123:8123
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./automation/master:/config
+    depends_on:
+      - mqtt
+
+  nginx:
+    container_name: automation_nginx
+    image: ""
+    networks:
+      - cluster-ingress
+      - cluster-internal
+
+  appliances:
+    container_name: automation_appliances
+    image: homeassistant/home-assistant:0.100.3
+    networks:
+      - cluster
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./automation/appliances:/config
+    depends_on:
+      - mqtt
+      - master
+
+  communication:
+    container_name: automation_communication
+    image: homeassistant/home-assistant:0.100.3
+    networks:
+      - cluster
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./automation/appliances:/config
+    depends_on:
+      - mqtt
+      - master
+
+  environment:
+    container_name: automation_environment
+    image: homeassistant/home-assistant:0.100.3
+    networks:
+      - cluster
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./automation/environment:/config
+    depends_on:
+      - mqtt
+      - master
+
+  hubs:
+    container_name: automation_hubs
+    image: homeassistant/home-assistant:0.95.4
+    networks:
+      - cluster
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./automation/hubs:/config
+    depends_on:
+      - mqtt
+      - master
+
+  media:
+    container_name: automation_media
+    image: homeassistant/home-assistant:0.100.3
+    networks:
+      - cluster
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./automation/media:/config
+    depends_on:
+      - mqtt
+      - master
+
+  planning:
+    container_name: automation_planning
+    image: homeassistant/home-assistant:0.100.3
+    networks:
+      - cluster
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./automation/planning:/config
+    depends_on:
+      - mqtt
+      - master
+
+  security:
+    container_name: automation_security
+    image: homeassistant/home-assistant:0.100.3
+    networks:
+      - cluster
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./automation/security:/config
+    depends_on:
+      - mqtt
+      - master
+
+  trackers:
+    container_name: automation_trackers
+    image: homeassistant/home-assistant:0.100.3
+    networks:
+      - cluster
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./automation/trackers:/config
+    depends_on:
+      - mqtt
+      - master
+
+  # zigbee:
+  #   container_name: automation_zigbee
+  #   image: homeassistant/home-assistant:0.100.3
+  #   networks:
+  #     - cluster
+  #   volumes:
+  #     - /etc/localtime:/etc/localtime:ro
+  #     - ./automation/zigbee:/config
+  #   depends_on:
+  #     - mqtt
+  #     - master
+
+  zwave:
+    container_name: automation_zwave
+    image: homeassistant/home-assistant:0.100.3
+    networks:
+      - cluster
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./automation/zwave:/config
+    devices:
+      - /dev/ttyACM0:/dev/ttyACM0
+    depends_on:
+      - mqtt
+      - master
+
+  rules:
+    container_name: automation_rules
+    image: acockburn/appdaemon:latest
+    networks:
+      - cluster
+    volumes:
+      - '{{ automation_mounted_directory }}/configs/ha-triggers:/conf'
+      - '/etc/localtime:/etc/localtime:ro'
+    depends_on:
+      - mqtt
+      - master
+      - zwave
+      # - zigbee
+      - trackers
+      - security
+      - planning
+      - media
+      - hubs
+      - environment
+      - communication
+      - appliances
