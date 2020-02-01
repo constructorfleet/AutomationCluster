@@ -6,7 +6,7 @@
     url = https://github.com/constructorfleet/HomeAssistant-Config-Environmental.git
 [submodule "configs/security"]
 	path = configs/security
-	url = git@github.com:constructorfleet/HomeAssistant-Config-Security.git
+    url = https://github.com/constructorfleet/HomeAssistant-Config-Security.git
 [submodule "configs/appliances"]
 	path = configs/appliances
     url = https://github.com/constructorfleet/HomeAssistant-Config-Appliances.git
