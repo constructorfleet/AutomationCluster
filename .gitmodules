@@ -13,9 +13,6 @@
 [submodule "configs/planning"]
 	path = configs/planning
 	url = git@github.com:constructorfleet/HomeAssistant-Config-Planning.git
-[submodule "configs/trackers"]
-	path = configs/trackers
-	url = git@github.com:constructorfleet/HomeAssistant-Config-Tracker.git
 [submodule "configs/communication"]
 	path = configs/communication
 	url = git@github.com:constructorfleet/HomeAssistant-Config-Communication.git
@@ -25,3 +22,6 @@
 [submodule "configs/master"]
 	path = configs/master
 	url = git@github.com:constructorfleet/HomeAssistant-Config-Master.git
+[submodule "configs/trackers"]
+	path = configs/trackers
+	url = git@github.com:constructorfleet/HomeAssistant-Config-Tracker.git
