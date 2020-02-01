@@ -1,0 +1,27 @@
+[submodule "configs/media"]
+	path = configs/media
+	url = git@github.com:constructorfleet/HomeAssistant-Config-Media.git
+[submodule "configs/environment"]
+	path = configs/environment
+	url = git@github.com:constructorfleet/HomeAssistant-Config-Environmental.git
+[submodule "configs/security"]
+	path = configs/security
+	url = git@github.com:constructorfleet/HomeAssistant-Config-Security.git
+[submodule "configs/appliances"]
+	path = configs/appliances
+	url = git@github.com:constructorfleet/HomeAssistant-Config-Appliances.git
+[submodule "configs/planning"]
+	path = configs/planning
+	url = git@github.com:constructorfleet/HomeAssistant-Config-Planning.git
+[submodule "configs/trackers"]
+	path = configs/trackers
+	url = git@github.com:constructorfleet/HomeAssistant-Config-Tracker.git
+[submodule "configs/communication"]
+	path = configs/communication
+	url = git@github.com:constructorfleet/HomeAssistant-Config-Communication.git
+[submodule "configs/zwave"]
+	path = configs/zwave
+	url = git@github.com:constructorfleet/HomeAssistant-Config-Zwave.git
+[submodule "configs/master"]
+	path = configs/master
+	url = git@github.com:constructorfleet/HomeAssistant-Config-Master.git
