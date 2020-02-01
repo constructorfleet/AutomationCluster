@@ -137,32 +137,6 @@ services:
       - mqtt
       - master
 
-  # zigbee:
-  #   container_name: automation_zigbee
-  #   image: homeassistant/home-assistant:0.100.3
-  #   networks:
-  #     - cluster
-  #   volumes:
-  #     - /etc/localtime:/etc/localtime:ro
-  #     - ./automation/zigbee:/config
-  #   depends_on:
-  #     - mqtt
-  #     - master
-
-  zwave:
-    container_name: automation_zwave
-    image: homeassistant/home-assistant:0.100.3
-    networks:
-      - automation-cluster
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - ./automation/zwave:/config
-    devices:
-      - /dev/ttyACM0:/dev/ttyACM0
-    depends_on:
-      - mqtt
-      - master
-
   rules:
     container_name: automation_rules
     image: acockburn/appdaemon:latest
