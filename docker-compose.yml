@@ -9,6 +9,8 @@ services:
   nginx-proxy:
     image: jwilder/nginx-proxy
     container_name: automation_proxy
+    networks:
+      - automation-cluster
     ports:
       - 3000:80
     volumes:
