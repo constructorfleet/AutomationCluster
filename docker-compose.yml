@@ -94,7 +94,7 @@ services:
     networks:
       - automation-cluster
     ports:
-      - 9003:8128
+      - 9003:8123
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/hubs:/config
@@ -110,7 +110,7 @@ services:
     networks:
       - automation-cluster
     ports:
-      - 9004:8128
+      - 9004:8123
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/media:/config
@@ -126,7 +126,7 @@ services:
     networks:
       - automation-cluster
     ports:
-      - 9005:8128
+      - 9005:8123
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/planning:/config
@@ -142,7 +142,7 @@ services:
     networks:
       - automation-cluster
     ports:
-      - 9006:8128
+      - 9006:8123
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/security:/config
@@ -158,7 +158,7 @@ services:
     networks:
       - automation-cluster
     ports:
-      - 9007:8128
+      - 9007:8123
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/trackers:/config
