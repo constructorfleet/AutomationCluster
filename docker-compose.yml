@@ -10,7 +10,7 @@ services:
     image: jwilder/nginx-proxy
     container_name: automation_proxy
     ports:
-      - "8123:80"
+      - 3000:80
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
 
@@ -20,7 +20,7 @@ services:
     networks:
       - automation-cluster
     volumes:
-      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
       - /etc/localtime:/etc/localtime:ro
 
   master:
@@ -32,20 +32,17 @@ services:
       - 8123:8123
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./conigs/master:/configs
-
-  nginx:
-    container_name: automation_nginx
-    image: ""
-    networks:
-      - cluster-ingress
-      - automation-cluster
+      - ./configs/master:/config
+    depends_on:
+      - mqtt
 
   appliances:
     container_name: automation_appliances
     image: homeassistant/home-assistant:0.100.3
     networks:
-      - cluster
+      - automation-cluster
+    ports:
+      - 9000:8123
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/appliances:/config
@@ -58,6 +55,8 @@ services:
     image: homeassistant/home-assistant:0.100.3
     networks:
       - automation-cluster
+    ports:
+      - 9001:8123
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/appliances:/config
@@ -70,6 +69,8 @@ services:
     image: homeassistant/home-assistant:0.100.3
     networks:
       - automation-cluster
+    ports:
+      - 9002:8123
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/environment:/config
@@ -82,6 +83,8 @@ services:
     image: homeassistant/home-assistant:0.95.4
     networks:
       - automation-cluster
+    ports:
+      - 9003:8128
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/hubs:/config
@@ -94,6 +97,8 @@ services:
     image: homeassistant/home-assistant:0.100.3
     networks:
       - automation-cluster
+    ports:
+      - 9004:8128
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/media:/config
@@ -105,7 +110,9 @@ services:
     container_name: automation_planning
     image: homeassistant/home-assistant:0.100.3
     networks:
-      - cluster
+      - automation-cluster
+    ports:
+      - 9005:8128
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/planning:/config
@@ -118,6 +125,8 @@ services:
     image: homeassistant/home-assistant:0.100.3
     networks:
       - automation-cluster
+    ports:
+      - 9006:8128
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/security:/config
@@ -130,6 +139,8 @@ services:
     image: homeassistant/home-assistant:0.100.3
     networks:
       - automation-cluster
+    ports:
+      - 9007:8128
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/trackers:/config
@@ -137,24 +148,24 @@ services:
       - mqtt
       - master
 
-  rules:
-    container_name: automation_rules
-    image: acockburn/appdaemon:latest
-    networks:
-      - automation-cluster
-    volumes:
-      - '/data/configs/automation/rules/:/conf'
-      - '/etc/localtime:/etc/localtime:ro'
-    depends_on:
-      - mqtt
-      - master
-      - zwave
-      # - zigbee
-      - trackers
-      - security
-      - planning
-      - media
-      - hubs
-      - environment
-      - communication
-      - appliances
+  # rules:
+  #   container_name: automation_rules
+  #   image: acockburn/appdaemon:latest
+  #   networks:
+  #     - automation-cluster
+  #   volumes:
+  #     - '/data/configs/automation/rules/:/conf'
+  #     - '/etc/localtime:/etc/localtime:ro'
+  #   depends_on:
+  #     - mqtt
+  #     - master
+  #     - zwave
+  #     # - zigbee
+  #     - trackers
+  #     - security
+  #     - planning
+  #     - media
+  #     - hubs
+  #     - environment
+  #     - communication
+  #     - appliances
