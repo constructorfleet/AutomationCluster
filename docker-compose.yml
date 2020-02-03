@@ -174,7 +174,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/trackers:/config
     environment:
-      - VIRTUAL_HOST=trackers.constructorfleet.iot
+      - VIRTUAL_HOST=automation.prettybaked.com
+      #- VIRTUAL_HOST=trackers.constructorfleet.iot
     depends_on:
       - mqtt
       - master
