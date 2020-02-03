@@ -37,6 +37,7 @@ services:
       - ./configs/master:/config
     environment:
       - VIRTUAL_HOST=constructorfleet.iot
+      - VIRTUAL_PORT=8123
     depends_on:
       - mqtt
 
@@ -52,6 +53,7 @@ services:
       - ./configs/appliances:/config
     environment:
       - VIRTUAL_HOST=appliances.constructorfleet.iot
+      - VIRTUAL_PORT=8123
     depends_on:
       - mqtt
       - master
