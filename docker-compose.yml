@@ -62,7 +62,6 @@ services:
       - ./configs/appliances:/config
     environment:
       - VIRTUAL_HOST=appliances.constructorfleet.iot
-      - VIRTUAL_PORT=8123
     depends_on:
       - mqtt
       - master
@@ -174,8 +173,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/trackers:/config
     environment:
-      - VIRTUAL_HOST=automation.prettybaked.com
-      #- VIRTUAL_HOST=trackers.constructorfleet.iot
+      - VIRTUAL_HOST=trackers.constructorfleet.iot
     depends_on:
       - mqtt
       - master
