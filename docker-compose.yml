@@ -6,6 +6,15 @@ networks:
       name: automation-cluster
 
 services:
+  mdns-repeater:
+    image: angelnu/mdns_repeater
+    container_name: automation_mdns
+    networks:
+      - automation-cluster
+    volumes: 
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - /var/run/dbus:/var/run/dbus
+
   nginx-proxy:
     image: jwilder/nginx-proxy
     container_name: automation_proxy
