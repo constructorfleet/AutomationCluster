@@ -178,24 +178,24 @@ services:
       - mqtt
       - master
 
-  # rules:
-  #   container_name: automation_rules
-  #   image: acockburn/appdaemon:latest
-  #   networks:
-  #     - automation-cluster
-  #   volumes:
-  #     - '/data/configs/automation/rules/:/conf'
-  #     - '/etc/localtime:/etc/localtime:ro'
-  #   depends_on:
-  #     - mqtt
-  #     - master
+   rules:
+     container_name: automation_rules
+     image: acockburn/appdaemon:latest
+     networks:
+       - automation-cluster
+     volumes:
+       - /etc/localtime:/etc/localtime:ro'
+       - .config//rules/:/conf
+     depends_on:
+       - mqtt
+       - master
   #     - zwave
   #     # - zigbee
-  #     - trackers
-  #     - security
-  #     - planning
-  #     - media
-  #     - hubs
-  #     - environment
-  #     - communication
-  #     - appliances
+       - trackers
+       - security
+       - planning
+       - media
+       - hubs
+       - environment
+       - communication
+       - appliances
