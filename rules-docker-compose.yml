@@ -1,0 +1,16 @@
+version: "3.4"
+
+networks:
+  automation-cluster:
+    external:
+      name: automation-cluster
+
+services:
+  rules:
+    container_name: automation_rules
+    image: acockburn/appdaemon:3.0.5
+    networks:
+      - automation-cluster
+    volumes:
+      - ./configs/rules:/conf
+      - '/etc/localtime:/etc/localtime:ro'
