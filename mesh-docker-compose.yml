@@ -1,0 +1,23 @@
+version: "3.4"
+
+networks:
+  automation-cluster:
+    external:
+      name: automation-cluster
+
+services:
+  zwave:
+    container_name: automation_zwave
+    image: homeassistant/home-assistant:0.100.3
+    networks:
+      - automation-cluster
+    ports:
+      - 8000:8123
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./configs/zwave:/config
+    environment:
+      - VIRTUAL_HOST=zwave.constructorfleet.iot
+    devices:
+      - /dev/ttyACM1:/dev/ttyACM1
+    privileged: true
