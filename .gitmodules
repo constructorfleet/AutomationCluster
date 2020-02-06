@@ -28,3 +28,6 @@
 [submodule "configs/hubs"]
 	path = configs/hubs
     url = https://github.com/constructorfleet/HomeAssistant-Config-Hub.git
+[submodule "configs/settings"]
+	path = configs/settings
+	url = https://github.com/constructorfleet/HomeAssistant-Config-Settings.git
