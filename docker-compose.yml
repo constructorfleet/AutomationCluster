@@ -49,6 +49,22 @@ services:
       - VIRTUAL_PORT=8123
     depends_on:
       - mqtt
+  
+  settings:
+    container_name: automation_settings
+    image: homeassistant/home-assistant:0.100.3
+    networks:
+      - automation-cluster
+    ports:
+      - 8001:8123
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./configs/settings:/config
+    environment:
+      - VIRTUAL_HOST=settings.constructorfleet.iot
+    depends_on:
+      - mqtt
+      - master
 
   appliances:
     container_name: automation_appliances
