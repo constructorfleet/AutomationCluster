@@ -164,7 +164,7 @@ services:
 
   security:
     container_name: automation_security
-    image: homeassistant/home-assistant:0.100.3
+    image: homeassistant/home-assistant:0.101.3
     networks:
       - automation-cluster
     ports:
