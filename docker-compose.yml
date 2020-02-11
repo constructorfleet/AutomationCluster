@@ -45,7 +45,7 @@ services:
   
   settings:
     container_name: automation_settings
-    image: homeas/sistant/home-assistant:0.100.3
+    image: homeassistant/home-assistant:0.100.3
     networks:
       - automation-cluster
     ports:
