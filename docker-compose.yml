@@ -4,6 +4,9 @@ networks:
   automation-cluster:
     external:
       name: automation-cluster
+  host:
+    external:
+      name: host
 
 services:
   mdns-repeater:
@@ -11,7 +14,8 @@ services:
     container_name: automation_mdns
     env:
       - dockerNIC=br-ab9098c97eb
-    network-mode: host
+    networks:
+      - host
     volumes: 
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - /var/run/dbus:/var/run/dbus
