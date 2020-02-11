@@ -4,22 +4,8 @@ networks:
   automation-cluster:
     external:
       name: automation-cluster
-  host:
-    external:
-      name: host
 
 services:
-  mdns-repeater:
-    image: angelnu/mdns_repeater
-    container_name: automation_mdns
-    environment:
-      - dockerNIC=br-ab9098c97eb
-    networks:
-      - host
-    volumes: 
-      - /var/run/docker.sock:/tmp/docker.sock:ro
-      - /var/run/dbus:/var/run/dbus
-
   nginx-proxy:
     image: jwilder/nginx-proxy
     container_name: automation_proxy
