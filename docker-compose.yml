@@ -9,8 +9,9 @@ services:
   mdns-repeater:
     image: angelnu/mdns_repeater
     container_name: automation_mdns
-    networks:
-      - automation-cluster
+    env:
+      - dockerNIC=br-ab9098c97eb
+    network-mode: host
     volumes: 
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - /var/run/dbus:/var/run/dbus
