@@ -184,6 +184,7 @@ services:
     environment:
       - VIRTUAL_HOST=trackers.automation.home.prettybaked.com
       - VIRTUAL_PROTO=https
+      - VIRTUAL_PORT=443
     depends_on:
       - mqtt
       - master
