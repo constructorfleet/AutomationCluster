@@ -183,6 +183,7 @@ services:
       - ./configs/trackers:/config
     environment:
       - VIRTUAL_HOST=trackers.automation.home.prettybaked.com
+      - VIRTUAL_PROTO=https
     depends_on:
       - mqtt
       - master
