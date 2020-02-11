@@ -12,7 +12,7 @@ services:
   mdns-repeater:
     image: angelnu/mdns_repeater
     container_name: automation_mdns
-    env:
+    environment:
       - dockerNIC=br-ab9098c97eb
     networks:
       - host
