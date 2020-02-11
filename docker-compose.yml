@@ -13,7 +13,9 @@ services:
       - automation-cluster
     ports:
       - 80:80
+      - 443:443
     volumes:
+      - /data/ssl/prettybaked_wildcard
       - /var/run/docker.sock:/tmp/docker.sock:ro
 
   mqtt:
@@ -36,14 +38,14 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/master:/config
     environment:
-      - VIRTUAL_HOST=constructorfleet.iot
+      - VIRTUAL_HOST=automation.prettybaked.com,automation.home.prettybaked.com
       - VIRTUAL_PORT=8123
     depends_on:
       - mqtt
   
   settings:
     container_name: automation_settings
-    image: homeassistant/home-assistant:0.100.3
+    image: homeas/sistant/home-assistant:0.100.3
     networks:
       - automation-cluster
     ports:
@@ -52,7 +54,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/settings:/config
     environment:
-      - VIRTUAL_HOST=settings.constructorfleet.iot
+      - VIRTUAL_HOST=settings.home.prettybaked.com
     depends_on:
       - mqtt
       - master
@@ -68,7 +70,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/appliances:/config
     environment:
-      - VIRTUAL_HOST=appliances.constructorfleet.iot
+      - VIRTUAL_HOST=appliances.home.prettybaked.com
     depends_on:
       - mqtt
       - master
@@ -84,7 +86,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/appliances:/config
     environment:
-      - VIRTUAL_HOST=communication.constructorfleet.iot
+      - VIRTUAL_HOST=communication.home.prettybaked.com
     depends_on:
       - mqtt
       - master
@@ -100,7 +102,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/environment:/config
     environment:
-      - VIRTUAL_HOST=environment.constructorfleet.iot
+      - VIRTUAL_HOST=environment.home.prettybaked.com
     depends_on:
       - mqtt
       - master
@@ -116,7 +118,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/hubs:/config
     environment:
-      - VIRTUAL_HOST=hubs.constructorfleet.iot
+      - VIRTUAL_HOST=hubs.home.prettybaked.com
     depends_on:
       - mqtt
       - master
@@ -132,7 +134,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/media:/config
     environment:
-      - VIRTUAL_HOST=media.constructorfleet.iot
+      - VIRTUAL_HOST=media.home.prettybaked.com
     depends_on:
       - mqtt
       - master
@@ -148,7 +150,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/planning:/config
     environment:
-      - VIRTUAL_HOST=planning.constructorfleet.iot
+      - VIRTUAL_HOST=planning.home.prettybaked.com
     depends_on:
       - mqtt
       - master
@@ -164,7 +166,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/security:/config
     environment:
-      - VIRTUAL_HOST=security.constructorfleet.iot
+      - VIRTUAL_HOST=security.home.prettybaked.com
     depends_on:
       - mqtt
       - master
@@ -180,7 +182,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/trackers:/config
     environment:
-      - VIRTUAL_HOST=trackers.constructorfleet.iot
+      - VIRTUAL_HOST=trackers.home.prettybaked.com
     depends_on:
       - mqtt
       - master
