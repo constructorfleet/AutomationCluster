@@ -17,7 +17,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/zwave:/config
     environment:
-      - VIRTUAL_HOST=security.automation.home.prettybaked.com
+      - VIRTUAL_HOST=zwave.automation.home.prettybaked.com
       - VIRTUAL_PORT=443
     devices:
       - /dev/serial/by-id/usb-0658_0200-if00:/dev/ttyACM0
