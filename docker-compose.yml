@@ -15,7 +15,7 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - /data/ssl/prettybaked_wildcard
+      - /data/ssl/prettybaked_wildcard:/etc/nginx/certs
       - /var/run/docker.sock:/tmp/docker.sock:ro
 
   mqtt:
