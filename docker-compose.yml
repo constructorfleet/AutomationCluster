@@ -38,7 +38,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/master:/config
     environment:
-      - VIRTUAL_HOST=master.automation.home.prettybaked.com
+      - VIRTUAL_HOST=master.automation.home.prettybaked.com,automation.home.prettybaked
       - VIRTUAL_PORT=8123
     depends_on:
       - mqtt
@@ -55,6 +55,7 @@ services:
       - ./configs/settings:/config
     environment:
       - VIRTUAL_HOST=settings.automation.home.prettybaked.com
+      - VIRTUAL_PORT=443
     depends_on:
       - mqtt
       - master
@@ -71,6 +72,7 @@ services:
       - ./configs/appliances:/config
     environment:
       - VIRTUAL_HOST=appliances.automation.home.prettybaked.com
+      - VIRTUAL_PORT=443
     depends_on:
       - mqtt
       - master
@@ -87,6 +89,7 @@ services:
       - ./configs/appliances:/config
     environment:
       - VIRTUAL_HOST=communication.automation.home.prettybaked.com
+      - VIRTUAL_PORT=443
     depends_on:
       - mqtt
       - master
@@ -103,6 +106,7 @@ services:
       - ./configs/environment:/config
     environment:
       - VIRTUAL_HOST=environment.automation.home.prettybaked.com
+      - VIRTUAL_PORT=443
     depends_on:
       - mqtt
       - master
@@ -119,6 +123,7 @@ services:
       - ./configs/hubs:/config
     environment:
       - VIRTUAL_HOST=hubs.automation.home.prettybaked.com
+      - VIRTUAL_PORT=443
     depends_on:
       - mqtt
       - master
@@ -135,6 +140,7 @@ services:
       - ./configs/media:/config
     environment:
       - VIRTUAL_HOST=media.automation.home.prettybaked.com
+      - VIRTUAL_PORT=443
     depends_on:
       - mqtt
       - master
@@ -150,7 +156,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/planning:/config
     environment:
-      - VIRTUAL_HOST=.automation.home.prettybaked.com
+      - VIRTUAL_HOST=planning.automation.home.prettybaked.com
+      - VIRTUAL_PORT=443
     depends_on:
       - mqtt
       - master
@@ -167,6 +174,7 @@ services:
       - ./configs/security:/config
     environment:
       - VIRTUAL_HOST=security.automation.home.prettybaked.com
+      - VIRTUAL_PORT=443
     depends_on:
       - mqtt
       - master
