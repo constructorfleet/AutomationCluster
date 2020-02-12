@@ -8,7 +8,7 @@ networks:
 services:
   rules:
     container_name: automation_rules
-    image: acockburn/appdaemon:3.0.5
+    image: acockburn/appdaemon:4.0.1
     networks:
       - automation-cluster
     volumes:
