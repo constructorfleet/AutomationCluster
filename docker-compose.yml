@@ -38,7 +38,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/master:/config
     environment:
-      - VIRTUAL_HOST=master.automation.home.prettybaked.com,automation.home.prettybaked
+      - VIRTUAL_HOST=master.automation.home.prettybaked.com,automation.home.prettybaked.com,automation.prettybaked.com
       - VIRTUAL_PORT=8123
     depends_on:
       - mqtt
