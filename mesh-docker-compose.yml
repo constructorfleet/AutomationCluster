@@ -9,6 +9,7 @@ services:
   zwave:
     container_name: automation_zwave
     image: homeassistant/home-assistant:0.100.3
+    restart: always
     networks:
       - automation-cluster
     ports:

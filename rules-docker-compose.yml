@@ -9,6 +9,7 @@ services:
   rules:
     container_name: automation_rules
     image: acockburn/appdaemon:4.0.1
+    restart: always
     networks:
       - automation-cluster
     ports:
