@@ -176,7 +176,7 @@ services:
 
   security:
     container_name: automation_security
-    image: homeassistant/home-assistant:0.101.3
+    image: homeassistant/home-assistant:0.102.3
     restart: always
     networks:
       - automation-cluster
