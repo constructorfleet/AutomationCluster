@@ -94,7 +94,7 @@ services:
       - 9001:8123
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./configs/appliances:/config
+      - ./configs/communication:/config
     environment:
       - VIRTUAL_HOST=communication.automation.home.prettybaked.com
       - VIRTUAL_PORT=443
