@@ -209,3 +209,51 @@ services:
     depends_on:
       - mqtt
       - master
+
+  zwave:
+    container_name: automation_zwave
+    image: homeassistant/home-assistant:0.100.3
+    restart: always
+    networks:
+      - automation-cluster
+    ports:
+      - 8000:8123
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./configs/zwave:/config
+    environment:
+      - VIRTUAL_HOST=zwave.automation.home.prettybaked.com
+      - VIRTUAL_PORT=443
+    devices:
+      - /dev/serial/by-id/usb-0658_0200-if00:/dev/ttyACM0
+    privileged: true
+    depends_on:
+      - mqtt
+      - master
+
+  rules:
+    container_name: automation_rules
+    image: acockburn/appdaemon:4.0.1
+    restart: always
+    networks:
+      - automation-cluster
+    ports:
+      - 5050:5050
+    volumes:
+      - ./configs/rules:/conf
+      - '/etc/localtime:/etc/localtime:ro'
+    environment:
+      - VIRTUAL_HOST=rules.automation.home.prettybaked.com
+      - VIRTUAL_PORT=443
+    depends_on:
+      - mqtt
+      - master
+      - appliances
+      - communication
+      - hubs
+      - master
+      - media
+      - settings
+      - security
+      - planning
+      - zwave
