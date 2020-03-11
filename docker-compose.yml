@@ -185,7 +185,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./configs/security:/config
-      - ./configs/master/www/camera_snapshot:/configs/www/camera_snapshot
+      - ./configs/master:/master
     environment:
       - VIRTUAL_HOST=security.automation.home.prettybaked.com
       - VIRTUAL_PORT=443
