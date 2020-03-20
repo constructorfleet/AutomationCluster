@@ -140,7 +140,7 @@ services:
 
   media:
     container_name: automation_media
-    image: homeassistant/home-assistant:0.100.3
+    image: homeassistant/home-assistant:0.106.6
     restart: always
     networks:
       - automation-cluster
