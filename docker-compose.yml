@@ -104,7 +104,7 @@ services:
 
   environment:
     container_name: automation_environment
-    image: homeassistant/home-assistant:0.100.3
+    image: homeassistant/home-assistant:0.106.6
     restart: always
     networks:
       - automation-cluster
