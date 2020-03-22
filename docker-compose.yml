@@ -195,7 +195,7 @@ services:
 
   trackers:
     container_name: automation_trackers
-    image: homeassistant/home-assistant:0.100.3
+    image: homeassistant/home-assistant:0.106.6
     restart: always
     networks:
       - automation-cluster
