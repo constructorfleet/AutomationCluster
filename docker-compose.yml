@@ -211,7 +211,7 @@ services:
       - mqtt
       - master
 
-  zwave:
+  insteon:
     container_name: automation_insteon
     image: homeassistant/home-assistant:0.100.3
     restart: always
