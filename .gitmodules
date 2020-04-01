@@ -31,3 +31,6 @@
 [submodule "configs/settings"]
 	path = configs/settings
 	url = https://github.com/constructorfleet/HomeAssistant-Config-Settings.git
+[submodule "configs/insteon"]
+	path = configs/insteon
+	url = https://github.com/constructorfleet/HomeAssistant-Config-Insteon.git
