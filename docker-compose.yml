@@ -33,7 +33,7 @@ services:
 
   master:
     container_name: automation_master
-    image: homeassistant/home-assistant:107.7
+    image: homeassistant/home-assistant:0.107.7
     restart: always
     networks:
       - automation-cluster
@@ -104,7 +104,7 @@ services:
 
   environment:
     container_name: automation_environment
-    image: homeassistant/home-assistant:0.106.6
+    image: homeassistant/home-assistant:0.107.7
     restart: always
     networks:
       - automation-cluster
@@ -122,7 +122,7 @@ services:
 
   hubs:
     container_name: automation_hubs
-    image: homeassistant/home-assistant:107.7
+    image: homeassistant/home-assistant:0.107.7
     restart: always
     networks:
       - automation-cluster
@@ -140,7 +140,7 @@ services:
 
   media:
     container_name: automation_media
-    image: homeassistant/home-assistant:0.106.6
+    image: homeassistant/home-assistant:0.107.7
     restart: always
     networks:
       - automation-cluster
@@ -195,7 +195,7 @@ services:
 
   trackers:
     container_name: automation_trackers
-    image: homeassistant/home-assistant:0.106.6
+    image: homeassistant/home-assistant:0.107.7
     restart: always
     networks:
       - automation-cluster
