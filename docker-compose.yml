@@ -49,6 +49,7 @@ services:
       - VIRTUAL_PORT=8123
     depends_on:
       - mqtt
+      - nginx-proxy
   
   settings:
     container_name: automation_settings
@@ -66,6 +67,7 @@ services:
       - VIRTUAL_PORT=443
     depends_on:
       - mqtt
+      - nginx-proxy
       - master
 
   appliances:
@@ -84,6 +86,7 @@ services:
       - VIRTUAL_PORT=443
     depends_on:
       - mqtt
+      - nginx-proxy
       - master
 
   communication:
@@ -102,6 +105,7 @@ services:
       - VIRTUAL_PORT=443
     depends_on:
       - mqtt
+      - nginx-proxy
       - master
 
   environment:
@@ -120,6 +124,7 @@ services:
       - VIRTUAL_PORT=443
     depends_on:
       - mqtt
+      - nginx-proxy
       - master
 
   hubs:
@@ -138,6 +143,7 @@ services:
       - VIRTUAL_PORT=443
     depends_on:
       - mqtt
+      - nginx-proxy
       - master
 
   media:
@@ -156,6 +162,7 @@ services:
       - VIRTUAL_PORT=443
     depends_on:
       - mqtt
+      - nginx-proxy
       - master
 
   planning:
@@ -174,6 +181,7 @@ services:
       - VIRTUAL_PORT=443
     depends_on:
       - mqtt
+      - nginx-proxy
       - master
 
   security:
@@ -193,6 +201,7 @@ services:
       - VIRTUAL_PORT=443
     depends_on:
       - mqtt
+      - nginx-proxy
       - master
 
   trackers:
@@ -211,6 +220,7 @@ services:
       - VIRTUAL_PORT=443
     depends_on:
       - mqtt
+      - nginx-proxy
       - master
 
   insteon:
@@ -232,6 +242,7 @@ services:
     privileged: true
     depends_on:
       - mqtt
+      - nginx-proxy
       - master
 
   zwave:
@@ -253,6 +264,7 @@ services:
     privileged: true
     depends_on:
       - mqtt
+      - nginx-proxy
       - master
 
   rules:
@@ -271,6 +283,7 @@ services:
       - VIRTUAL_PORT=443
     depends_on:
       - mqtt
+      - nginx-proxy
       - appliances
       - communication
       - hubs
