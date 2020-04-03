@@ -30,6 +30,8 @@ services:
     volumes:
       - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
       - /etc/localtime:/etc/localtime:ro
+    depends_on:
+      - nginx_proxy
 
   master:
     container_name: automation_master
