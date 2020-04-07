@@ -2,11 +2,6 @@
 
 docker-compose -f docker-compose.core.yml up -d
 
-while ! telnet localhost 1883
-do
-  echo "$(date) - still trying"
-  sleep 1
-done
-echo "$(date) - connected successfully"
+while ! nc -z localhost 1883 </dev/null; do sleep 10; done
 
 echo "Core up"
