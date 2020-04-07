@@ -6,33 +6,6 @@ networks:
       name: automation-cluster
 
 services:
-  nginx-proxy:
-    image: jwilder/nginx-proxy
-    container_name: automation_proxy
-    restart: always
-    networks:
-      - automation-cluster
-    ports:
-      - 80:80
-      - 443:443
-    volumes:
-      - ./ssl:/etc/nginx/certs
-      - /var/run/docker.sock:/tmp/docker.sock:ro
-
-  mqtt:
-    container_name: automation_mqtt
-    image: eclipse-mosquitto:latest
-    restart: always
-    networks:
-      - automation-cluster
-    ports:
-      - 1883:1883
-    volumes:
-      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
-      - /etc/localtime:/etc/localtime:ro
-    depends_on:
-      - nginx-proxy
-
   master:
     container_name: automation_master
     image: homeassistant/home-assistant:0.107.7
@@ -47,9 +20,6 @@ services:
     environment:
       - VIRTUAL_HOST=master.automation.home.prettybaked.com,automation.home.prettybaked.com,automation.prettybaked.com
       - VIRTUAL_PORT=8123
-    depends_on:
-      - mqtt
-      - nginx-proxy
   
   settings:
     container_name: automation_settings
@@ -66,8 +36,6 @@ services:
       - VIRTUAL_HOST=settings.automation.home.prettybaked.com
       - VIRTUAL_PORT=443
     depends_on:
-      - mqtt
-      - nginx-proxy
       - master
 
   appliances:
@@ -85,8 +53,6 @@ services:
       - VIRTUAL_HOST=appliances.automation.home.prettybaked.com
       - VIRTUAL_PORT=443
     depends_on:
-      - mqtt
-      - nginx-proxy
       - master
 
   communication:
@@ -104,8 +70,6 @@ services:
       - VIRTUAL_HOST=communication.automation.home.prettybaked.com
       - VIRTUAL_PORT=443
     depends_on:
-      - mqtt
-      - nginx-proxy
       - master
 
   environment:
@@ -123,8 +87,6 @@ services:
       - VIRTUAL_HOST=environment.automation.home.prettybaked.com
       - VIRTUAL_PORT=443
     depends_on:
-      - mqtt
-      - nginx-proxy
       - master
 
   hubs:
@@ -142,8 +104,6 @@ services:
       - VIRTUAL_HOST=hubs.automation.home.prettybaked.com
       - VIRTUAL_PORT=443
     depends_on:
-      - mqtt
-      - nginx-proxy
       - master
 
   media:
@@ -161,8 +121,6 @@ services:
       - VIRTUAL_HOST=media.automation.home.prettybaked.com
       - VIRTUAL_PORT=443
     depends_on:
-      - mqtt
-      - nginx-proxy
       - master
 
   planning:
@@ -180,8 +138,6 @@ services:
       - VIRTUAL_HOST=planning.automation.home.prettybaked.com
       - VIRTUAL_PORT=443
     depends_on:
-      - mqtt
-      - nginx-proxy
       - master
 
   security:
@@ -200,8 +156,6 @@ services:
       - VIRTUAL_HOST=security.automation.home.prettybaked.com
       - VIRTUAL_PORT=443
     depends_on:
-      - mqtt
-      - nginx-proxy
       - master
 
   trackers:
@@ -219,8 +173,6 @@ services:
       - VIRTUAL_HOST=trackers.automation.home.prettybaked.com
       - VIRTUAL_PORT=443
     depends_on:
-      - mqtt
-      - nginx-proxy
       - master
 
   insteon:
@@ -241,8 +193,6 @@ services:
       - /dev/serial/by-id/usb-0658_0200-if00:/dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AK05ZAX5-if00-port0
     privileged: true
     depends_on:
-      - mqtt
-      - nginx-proxy
       - master
 
   zwave:
@@ -263,8 +213,6 @@ services:
       - /dev/serial/by-id/usb-0658_0200-if00:/dev/serial/by-id/usb-0658_0200-if00
     privileged: true
     depends_on:
-      - mqtt
-      - nginx-proxy
       - master
 
   rules:
@@ -282,8 +230,6 @@ services:
       - VIRTUAL_HOST=rules.automation.home.prettybaked.com
       - VIRTUAL_PORT=443
     depends_on:
-      - mqtt
-      - nginx-proxy
       - appliances
       - communication
       - hubs
