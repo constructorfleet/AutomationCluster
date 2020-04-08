@@ -13,7 +13,9 @@ echo "Services up"
 while ! nc -z localhost 8123 </dev/null; do sleep 10; done
 
 docker exec -it automation_master apk add openldap-clients
+echo "Configs up"
 
 docker-compose -f docker-compose.services.yml up -d
 
+echo "Services up"
 echo "Complete"

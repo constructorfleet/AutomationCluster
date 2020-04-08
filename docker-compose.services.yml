@@ -19,6 +19,6 @@ services:
       - ./doods/tflite_detector.yaml
       - /etc/localtime:/etc/localtime:ro
     devices:
-      - /dev/apex_0:/apex_0
+      - /dev/apex_0/apex_0
     privileged: true
 
