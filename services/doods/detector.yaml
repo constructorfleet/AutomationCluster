@@ -6,5 +6,5 @@ doods:
       labelFile: models/coco_labels0.txt
       numThreads: 4
       numConcurrent: 4
-      hwAccel: false
+      hwAccel: true
       timeout: 2m
