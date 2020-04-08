@@ -239,9 +239,4 @@ services:
       - security
       - planning
       - zwave
-
-  doods:
-    container_name: automation_doods
-    image:
-    restart: always
     
