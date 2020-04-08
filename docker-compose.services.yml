@@ -15,10 +15,10 @@ services:
     ports:
       - 10001:8080
     volumes:
-      - ./doods/models:/models:/opt/doods/models
-      - ./doods/tflite_detector.yaml
+      - ./services/doods/models:/opt/doods/models
+      - ./services/doods/detector.yaml:/opt/doods/config.yaml
       - /etc/localtime:/etc/localtime:ro
     devices:
-      - /dev/apex_0/apex_0
+      - /dev/apex_0:/apex_0
     privileged: true
 
