@@ -1,0 +1,8 @@
+platform: doods
+url: http://doods:10001
+detector: edgetpu
+confidence: 75
+file_out: "/config/www/annotated_framed/{{ entity_id }}_{{(now() | string).split('.')[0] | replace(' ', '_') }}"
+source:
+  - entity: camera.front_door
+    name: Front Door
