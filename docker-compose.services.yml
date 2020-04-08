@@ -16,7 +16,7 @@ services:
       - 10001:8080
     volumes:
       - ./services/doods/models:/opt/doods/models
-      - ./services/doods/detector.yaml:/opt/doods/config.yaml
+      - ./services/doods/config.yaml:/opt/doods/config.yaml
       - /etc/localtime:/etc/localtime:ro
     devices:
       - /dev/apex_0:/apex_0
