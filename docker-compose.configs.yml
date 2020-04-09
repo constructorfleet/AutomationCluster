@@ -40,7 +40,7 @@ services:
 
   appliances:
     container_name: automation_appliances
-    image: homeassistant/home-assistant:0.100.3
+    image: homeassistant/home-assistant:0.107.07
     restart: always
     networks:
       - automation-cluster
