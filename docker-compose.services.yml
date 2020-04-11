@@ -18,7 +18,6 @@ services:
       - ./services/doods/models:/opt/doods/models
       - ./services/doods/config.yaml:/opt/doods/config.yaml
       - /etc/localtime:/etc/localtime:ro
-      - ./configs/master/wwww/annotated_frames:/config/www/annotated_framed
     devices:
       - /dev/apex_0:/apex_0
     privileged: true
