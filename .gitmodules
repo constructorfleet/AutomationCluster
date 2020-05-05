@@ -37,3 +37,6 @@
 [submodule "configs/ai"]
 	path = configs/ai
 	url = https://github.com/constructorfleet/HomeAssistant-Config-Ai.git
+[submodule "configs/companion"]
+	path = configs/companion
+	url = https://github.com/constructorfleet/HomeAssistant-Config-Companion.git
