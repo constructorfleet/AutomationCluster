@@ -10,6 +10,7 @@
 [submodule "configs/appliances"]
 	path = configs/appliances
     url = https://github.com/constructorfleet/HomeAssistant-Config-Appliances.git
+	branch = master
 [submodule "configs/planning"]
 	path = configs/planning
     url = https://github.com/constructorfleet/HomeAssistant-Config-Planning.git
@@ -37,6 +38,7 @@
 [submodule "configs/ai"]
 	path = configs/ai
 	url = https://github.com/constructorfleet/HomeAssistant-Config-Ai.git
+	branch = master
 [submodule "configs/companion"]
 	path = configs/companion
 	url = https://github.com/constructorfleet/HomeAssistant-Config-Companion.git
